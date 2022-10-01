@@ -70,4 +70,16 @@ sendButton.addEventListener("click", function (sendButtonClickEvent) {
   sendMessages(sender, message);
   myMessage.value = "";
 });
-setInterval(updateMessages, 1000);
+const saveNameButton = document.getElementById('save-name');
+const messageInput = document.getElementById('messageInput');
+
+saveNameButton.addEventListener("click", function() {
+    localStorage.setItem('name', nameInput.value);
+});
+setInterval(function() {
+  if (!localStorage.getItem('name')){
+      messageInput.classList.add('d-none');
+  } else {
+      messageInput.classList.remove('d-none');
+  }
+}, 100);
